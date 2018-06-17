@@ -21,7 +21,7 @@ const sendTillReceived = async (terminal, message) => {
   await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve()
-    }, 1000);
+    }, 100);
   })
 }
 
