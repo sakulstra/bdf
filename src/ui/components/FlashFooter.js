@@ -18,11 +18,12 @@ const styles = theme => ({
 
 const sendTillReceived = async (terminal, message) => {
   await terminal.send(message);
-  await new Promise((resolve, reject) => {
+  // add some extra delay to make sure the transfer is actually finished
+  /* await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve()
-    }, 100);
-  })
+    }, 20);
+  })*/
 }
 
 const spaceExtend = (num) => {
