@@ -9,7 +9,7 @@ class SpeedPicker extends Component{
     return (
       <div>
         <Typography id="label">Delay x {DomainStore.currentTerminal.props.speed}</Typography>
-        <Slider min={1} max={50} step={1} aria-labelledby="label" value={DomainStore.currentTerminal.props.speed} onChange={(e,v) => DomainStore.currentTerminal.props.speed = v} />
+        <Slider min={1} max={25} step={1} aria-labelledby="label" value={DomainStore.currentTerminal.props.speed} onChange={(e,v) => DomainStore.currentTerminal.props.speed = v} />
       </div>
     )
   }
