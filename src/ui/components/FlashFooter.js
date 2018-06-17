@@ -19,16 +19,16 @@ const styles = theme => ({
 const sendTillReceived = async (terminal, message) => {
   await terminal.send(message);
   // add some extra delay to make sure the transfer is actually finished
-  /* await new Promise((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve()
-    }, 20);
-  })*/
+    }, 100);
+  });
 }
 
-const spaceExtend = (num) => {
+const spaceExtend = (num, length = 3) => {
   num = num.toString();
-  if (num.length < 3) return spaceExtend(`0${num}`);
+  if (num.length < length) return spaceExtend(`0${num}`, length);
   return num;
 }
 
@@ -42,6 +42,7 @@ class FlashFooter extends Component {
     await sendTillReceived(terminal,`p${colorToString(props.primaryColor)}`);
     await sendTillReceived(terminal,`s${colorToString(props.secondaryColor)}`);
     await sendTillReceived(terminal,`m${props.modi}`);
+    await sendTillReceived(terminal,`d${spaceExtend(props.speed, 2)}`);
   }
 
   render() {
@@ -58,11 +59,5 @@ class FlashFooter extends Component {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  devices: state.devices,
-  brightness: state.brightness,
-  colors: state.colors
-});
 
 export default withStyles(styles)(FlashFooter);

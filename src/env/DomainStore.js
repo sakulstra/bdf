@@ -5,11 +5,24 @@ class DeviceStore{
   brightness = 0;
   primaryColor = observable({r: 50, g: 105, b: 102, a: 1});
   secondaryColor = observable({r: 131, g: 58, b: 139, a: 1});
+  speed = 5;
+  lastState = {};
+
+  get changes() {
+    const result = {};
+    if (this.lastState.modi !== this.modi) result.modi = this.modi;
+    if (this.lastState.brightness !== this.brightness) result.brightness = this.brightness;
+    if (this.lastState.speed !== this.speed) result.speed = this.speed;
+    result.primaryColor = this.primaryColor;
+    result.secondaryColor = this.secondaryColor;
+    return result;
+  }
 }
 
 decorate(DeviceStore, {
   modi: observable,
-  brightness: observable
+  brightness: observable,
+  speed: observable
 })
 
 class DomainStore{

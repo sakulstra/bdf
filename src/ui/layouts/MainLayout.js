@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { FlashFooter, ModeHeader, DeviceSelector } from '../components';
+import { DeviceSelector } from '../components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -51,18 +51,8 @@ class MainLayout extends Component{
         </AppBar>
         <Grid item xs={12}>
           <DeviceSelector />
+          {DomainStore.currentTerminal && children}
         </Grid>
-        {DomainStore.currentTerminal && <>
-          <Grid item xs={12}>
-            <ModeHeader />
-          </Grid>
-          <Grid item xs={12}>
-            {children}
-          </Grid>
-          <Grid item xs={12}>
-            <FlashFooter />
-          </Grid>
-        </>}
       </Grid>
       </div>
     )

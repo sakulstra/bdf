@@ -25,10 +25,11 @@ class DeviceSelector extends Component{
   render() {
     const {classes} = this.props;
     return (
+      <div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="device">Device</InputLabel>
         <Select
-          value={DomainStore.currentTerminal && DomainStore.currentTerminal.name || ''}
+          value={(DomainStore.currentTerminal && DomainStore.currentTerminal.name) || ''}
           onChange={this.handleChange}
           inputProps={{
             name: 'device',
@@ -41,6 +42,7 @@ class DeviceSelector extends Component{
           {DomainStore.terminals.map((terminal, ix) => <MenuItem key={ix} value={terminal.name}>{terminal.name}</MenuItem>)}
         </Select>
       </FormControl>
+      </div>
     )
   }
 }
